@@ -50,4 +50,4 @@ jobs:
         run: npm i
       
       - name: Run Compile
-        run: npm run compile && rm -rf dist
+        run: npm run build && rm -rf dist

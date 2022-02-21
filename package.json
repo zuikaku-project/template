@@ -1,0 +1,35 @@
+{
+  "name": "zuikaku-template",
+  "version": "1.0.0",
+  "description": "zuikaku-template is a template for zuikaku project.",
+  "main": "",
+  "scripts": {
+    "build": "rimraf dist && npm run lint && tsc",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zuikaku-org/zuikaku-template.git"
+  },
+  "keywords": [],
+  "author": "noxzym",
+  "license": "agpl-3.0",
+  "bugs": {
+    "url": "https://github.com/zuikaku-org/zuikaku-template/issues"
+  },
+  "homepage": "https://github.com/zuikaku-org/zuikaku-template#readme",
+  "engines": {
+    "node": ">=16",
+    "npm": ">=7"
+  },
+  "devDependencies": {
+    "@hazmi35/eslint-config": "^8.1.1",
+    "@types/node": "^17.0.18",
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.5.5"
+  }
+}

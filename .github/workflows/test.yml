@@ -1,53 +1,53 @@
 name: Lint & Compile Test
 
 on:
-  push:
-    branches: ["**"]
-  pull_request:
-    branches: ["**"]
+    push:
+        branches: - master
+    pull_request:
+        branches: - "**"
 
 jobs:
-  lint:
-    name: ESLint
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x]
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3.0.0
-  
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3.1.1
-      with:
-        node-version: ${{ matrix.node-version }}
-        check-latest: true
-        
-    - name: Install dependencies
-      run: npm i
+    lint:
+        name: ESLint
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: - ">=16.x <17.x"
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3.0.0
 
-    - name: Run ESLint
-      run: npm run lint
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v3.1.1
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  check-latest: true
 
-  compile:
-    needs: lint
-    name: Compile
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x]
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3.0.0
+            - name: Install dependencies
+              run: npm ci
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3.1.1
-        with:
-          node-version: ${{ matrix.node-version }}
-          check-latest: true
-        
-      - name: Install dependencies
-        run: npm i
-      
-      - name: Run Compile
-        run: npm run build && rm -rf dist
+            - name: Run ESLint
+              run: npm run lint
+
+    compile:
+        needs: lint
+        name: Compile
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: - ">=16.x <17.x"
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3.0.0
+
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v3.1.1
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  check-latest: true
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Run Compile
+              run: npm run build && rm -rf dist

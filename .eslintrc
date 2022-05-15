@@ -1,6 +1,0 @@
-{
-    "extends": "@hazmi35/eslint-config/typescript",
-    "parserOptions": {
-        "project": "./tsconfig.json"
-    }
-}

@@ -1,5 +1,30 @@
 {
-  "extends": [
-    "config:base"
-  ]
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "config:base",
+        "helpers:pinGitHubActionDigests",
+        "group:allNonMajor",
+        ":semanticCommits"
+    ],
+    "labels": ["meta: dependencies"],
+    "schedule": ["before 6am"],
+    "timezone": "Asia/Jakarta",
+    "docker": {
+        "enabled": true,
+        "rangeStrategy": "bump"
+    },
+    "npm": {
+        "rangeStrategy": "bump",
+        "packageRules": [
+            {
+                "matchUpdateTypes": ["minor", "patch"],
+                "matchCurrentVersion": "!/^0/",
+                "automerge": true
+            },
+            {
+                "matchDepTypes": ["engines"],
+                "enabled": false
+            }
+        ]
+    }
 }

@@ -47,7 +47,7 @@
         "arrowParens": "avoid"
     },
     "devDependencies": {
-        "@clytage-pkg/eslint-config": "^1.0.2",
+        "@clytage-pkg/eslint-config": "^1.1.0",
         "@types/js-yaml": "^4.0.5",
         "@types/node": "17.0.18",
         "@typescript-eslint/eslint-plugin": "^5.26.0",
